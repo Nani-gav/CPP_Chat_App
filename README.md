@@ -3,6 +3,7 @@
 WIP
 
 A basic chat app
+
 Quite dumb because I refuse to use ncurses
 
 TODO:
