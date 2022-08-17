@@ -6,7 +6,7 @@ A basic chat app
 
 Quite dumb because I refuse to use ncurses
 
-TODO:
-Add local IP address functionality
-Port to windows
-Make the client one program
+TODO:\n
+Add local IP address functionality\n
+Port to windows\n
+Make the client one program\n
