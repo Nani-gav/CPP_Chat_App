@@ -30,8 +30,7 @@ int main(){
     perror("getifaddrs error");
     exit(1);
   }
-
-  for (ifa = myaddrs; ifa != NULL; ifa = ifa->ifa_next){
+  for(ifa = myaddrs; ifa != NULL; ifa = ifa->ifa_next){
     if (ifa->ifa_addr == NULL)
         continue;
     if (!(ifa->ifa_flags & IFF_UP))
@@ -43,11 +42,7 @@ int main(){
         in_addr = &s4->sin_addr;
         break;
       }
-      case AF_INET6:{
-        struct sockaddr_in6 *s6 = (struct sockaddr_in6 *)ifa->ifa_addr;
-        in_addr = &s6->sin6_addr;
-        break;
-      }
+      // case AF_INET6:
       default:
         continue;
     }
