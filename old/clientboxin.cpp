@@ -51,6 +51,7 @@ int main(int argc, char** argv){
       if(clonf.action == JSNT_CLIENT_LEFT){
         return 0;
       }
+      cout << "\a" << std::flush;
       int len = client.readMesg(redbufr, 1024, 0);
       redbufr[len] = 0;
       server.writeMesg(outbox, redbufr, len);
