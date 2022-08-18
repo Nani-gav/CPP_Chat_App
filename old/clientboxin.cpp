@@ -12,12 +12,12 @@ using std::cout;
 // https://gamedev.stackexchange.com/questions/146256/how-do-i-get-getchar-to-not-block-the-input
 
 int main(int argc, char** argv){
-  if(argc < 2){
-    cout << "Input your username: E.g. EXEC_FILE username\n";
+  if(argc < 3){
+    cout << "Input your username and the server id: E.g. EXEC_FILE username server_id\n";
     return 0;
   }
 
-  jsntClient client(JSNT_USEIPV4, "127.0.0.1", 3000);
+  jsntClient client(JSNT_USEIPV4, argv[2], 3000);
   client.startClient();
   struct jsnt_client_info clonf;
   jsntServer server(JSNT_USEIPV4, 3069);
@@ -48,6 +48,9 @@ int main(int argc, char** argv){
     server.waitForMesg(&clonf);
     if(clonf.sfd == client.info.sfd){ // server
       // cout << "hi\n";
+      if(clonf.action == JSNT_CLIENT_LEFT){
+        return 0;
+      }
       int len = client.readMesg(redbufr, 1024, 0);
       redbufr[len] = 0;
       server.writeMesg(outbox, redbufr, len);

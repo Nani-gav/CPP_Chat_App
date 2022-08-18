@@ -1,1 +1,7 @@
 new/
+old/*
+!old/clientboxin.cpp
+!old/clientoutbox.cpp
+!old/server.cpp
+!old/tcp.h
+!old/client.h
